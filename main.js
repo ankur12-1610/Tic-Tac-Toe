@@ -1,3 +1,4 @@
+//singlpayer
 var tictacboard;
 let huPlayer ;
 let aiPlayer ;
@@ -49,7 +50,6 @@ function startSingle() {
 	tictacboard = Array.from(Array(9).keys());
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].innerText = '';
-
 		cells[i].addEventListener('click', turnClick, false);
 	}
 }
@@ -174,13 +174,20 @@ function minimax(newBoard, player) {
 	return moves[bestMove];
 }
 
-
-
+//Multipayer
+const statusDisplay = document.querySelector('.game--status');
+const statusDisplay1 = document.querySelector('.game--status1');
+const winDisplay = document.querySelector('.game--count');
+const winDisplay1 = document.querySelector('.game--count1');
 let gameActive = true;
 let currentPlayer;
+var previousPlayer;
 var win=0;
 
 const winningMessage = () => `${currentPlayer} has won :)`;
+const displayMessage = () => `${currentPlayer}: ${win}`;
+const displayMessage2 = () => `${previousPlayer}: ${win-1}`;
+const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 function scrolling(){
 	window.scrollTo(0,600);
@@ -192,6 +199,7 @@ function scrollingup(){
 
 function selectmO(){
 	currentPlayer = "O";
+	previousPlayer = "X";
 	scrolling();
 	alert("U can start playing the game as O");
 	multiStart() ;
@@ -199,6 +207,7 @@ function selectmO(){
 
 function selectmX(){
 	currentPlayer = "X";
+	previousPlayer = "O"
 	scrolling();
 	alert("U can start playing the game as X");
     multiStart() ;
@@ -206,7 +215,6 @@ function selectmX(){
 
 
 let gameState = ["", "", "", "", "", "", "", "", ""];
-
 
 
 const winChances = [
@@ -222,7 +230,7 @@ const winChances = [
 
 
 function multiStart() {
-
+	statusDisplay.innerHTML = currentPlayerTurn();
 function multiCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
@@ -230,6 +238,7 @@ function multiCellPlayed(clickedCell, clickedCellIndex) {
 
 function multiPlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+	statusDisplay.innerHTML = currentPlayerTurn();
 }
 
 
@@ -252,13 +261,18 @@ function multiResultValidation() {
     if (roundWon) {
         win ++;
         declareWinner(winningMessage());
+		statusDisplay.innerHTML = displayMessage();
+		statusDisplay1.innerHTML = displayMessage2();
         gameActive = false;
         return;
     }
 
     let roundDraw = !gameState.includes("");
     if (roundDraw) {
-        declareWinner("Tie Game :|")
+        declareWinner("Tie Game :|");
+		statusDisplay.innerHTML = displayMessage();
+		statusDisplay1.innerHTML = displayMessage2();
+		winDisplay.innerHTML = win;
         gameActive = false;
         return;
     }
