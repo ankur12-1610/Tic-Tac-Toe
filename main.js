@@ -194,13 +194,16 @@ function selectmO(){
 	currentPlayer = "O";
 	scrolling();
 	alert("U can start playing the game as O");
+	multiStart() ;
 }
 
 function selectmX(){
 	currentPlayer = "X";
 	scrolling();
 	alert("U can start playing the game as X");
+    multiStart() ;
 }
+
 
 let gameState = ["", "", "", "", "", "", "", "", ""];
 
@@ -216,6 +219,9 @@ const winChances = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+
+
+function multiStart() {
 
 function multiCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
@@ -283,7 +289,7 @@ document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click'
 document.querySelector('.game--restart').addEventListener('click', multiRestartGame);
 
 
-
+}
 
 
 
