@@ -293,8 +293,8 @@ function multiCellClick(clickedCellEvent) {
 
 function multiRestartGame() {
     gameActive = true;
+	currentPlayer;
     gameState = ["", "", "", "", "", "", "", "", ""];
-	
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 
