@@ -229,7 +229,6 @@ const winChances = [
     [2, 4, 6]
 ];
 
-
 function multiStart() {
 	statusDisplay.innerHTML = currentPlayerTurn();
 function multiCellPlayed(clickedCell, clickedCellIndex) {
