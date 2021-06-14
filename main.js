@@ -187,6 +187,7 @@ var win=0;
 const winningMessage = () => `${currentPlayer} has won :)`;
 const displayMessage = () => `${currentPlayer}: ${win}`;
 const displayMessage2 = () => `${previousPlayer}: ${win-1}`;
+const displayMessaget = () => `${previousPlayer}: ${win}`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 
 function scrolling(){
@@ -271,8 +272,7 @@ function multiResultValidation() {
     if (roundDraw) {
         declareWinner("Tie Game :|");
 		statusDisplay.innerHTML = displayMessage();
-		statusDisplay1.innerHTML = displayMessage2();
-		winDisplay.innerHTML = win;
+		statusDisplay1.innerHTML = displayMessaget();
         gameActive = false;
         return;
     }
