@@ -17,10 +17,12 @@ td {
 	font-size:  70px;
 	cursor: pointer;
 	border: 2px solid #364544;
+	color: #364544;
 }
 
 td:hover{
 	opacity:0.6;
+	Transform:scale(0.925);
   }
 
 .button2 {
@@ -125,7 +127,7 @@ table {
 	left: 50%;
 	margin-left: -155px;
 	top: 100px;
-	color: #364544;
+
 }
 
 
@@ -210,9 +212,7 @@ button.selected{
   .shadow {
 	animation: shrink 3s ease-out infinite;
 	transform-origin: center center;
-	ellipse {
-	  transform-origin: center center;
-	}
+
   }
   
   @keyframes shrink {
@@ -229,7 +229,4 @@ button.selected{
 	  margin: 0 5%;
 	}
   }
-
-
-
 

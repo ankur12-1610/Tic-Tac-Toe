@@ -2,6 +2,7 @@
 var tictacboard;
 let huPlayer ;
 let aiPlayer ;
+
 const winCombos = [
 	[0, 1, 2],
 	[3, 4, 5],
@@ -13,8 +14,7 @@ const winCombos = [
 	[6, 4, 2]
 ]
 const cells = document.querySelectorAll('.cell');
-const cross = document.getElementById('cross');
-const circle = document.getElementById('circle');
+
 
 function scrolling(){
 	window.scrollTo(0,500);
@@ -278,15 +278,17 @@ function multiResultValidation() {
         declareWinnermulti(winningMessage());
 		statusDisplay.innerHTML = displayMessage();
 		statusDisplay1.innerHTML = displayMessage2();
+		statusDisplay.innerHTML = drawMessage();
         gameActive = false;
         return;
     }
 
     let roundDraw = !gameState.includes("");
     if (roundDraw) {
-        declareWinner("Tie Game :|");
+        declareWinnermulti("Tie Game :|");
 		statusDisplay.innerHTML = displayMessage();
 		statusDisplay1.innerHTML = displayMessaget();
+		statusDisplay.innerHTML = drawMessage();
         gameActive = false;
         return;
     }
