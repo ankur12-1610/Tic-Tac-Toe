@@ -28,7 +28,7 @@ function selectO(){
 	huPlayer = "O";
 	aiPlayer = "X";
 	scrolling();
-	startSingle();
+	singleStart();
 	alert("U can start playing the game as O");
 }
 
@@ -36,15 +36,23 @@ function selectX(){
 	huPlayer = "X";
 	aiPlayer = "O";
 	scrolling();
-	startSingle();
+	singleStart();
 	alert("U can start playing the game as X");
 }
 function refresh(){
 	location.reload();
 	scrollingup();
+	alert('Redirecting to the menu');
 }
 
+function retry(){
+	singleStart();
+	scrollingup();
+	alert('Redirecting to the menu');
+}
 
+function singleStart() {
+startSingle();
 function startSingle() {
 	document.querySelector(".endgame").style.display = "none";
 	tictacboard = Array.from(Array(9).keys());
@@ -173,6 +181,7 @@ function minimax(newBoard, player) {
 
 	return moves[bestMove];
 }
+}
 
 //Multipayer
 const statusDisplay = document.querySelector('.game--status');
@@ -188,7 +197,7 @@ const winningMessage = () => `${currentPlayer} has won :)`;
 const displayMessage = () => `${currentPlayer}: ${win}`;
 const displayMessage2 = () => `${previousPlayer}: ${win-1}`;
 const displayMessaget = () => `${previousPlayer}: ${win}`;
-const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
+const currentPlayerTurn = () => `${currentPlayer} vro khel le`;
 
 function scrolling(){
 	window.scrollTo(0,600);
@@ -236,8 +245,14 @@ function multiCellPlayed(clickedCell, clickedCellIndex) {
     clickedCell.innerHTML = currentPlayer;
 }
 
+function declareWinnermulti(who) {
+	document.querySelector(".endgamemulti").style.display = "block";
+	document.querySelector(".endgamemulti .text").innerText = who;
+}
+
 function multiPlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+	previousPlayer = previousPlayer === "X" ? "O" : "X";
 	statusDisplay.innerHTML = currentPlayerTurn();
 }
 
@@ -260,7 +275,7 @@ function multiResultValidation() {
 
     if (roundWon) {
         win ++;
-        declareWinner(winningMessage());
+        declareWinnermulti(winningMessage());
 		statusDisplay.innerHTML = displayMessage();
 		statusDisplay1.innerHTML = displayMessage2();
         gameActive = false;

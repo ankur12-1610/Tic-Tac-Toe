@@ -162,6 +162,22 @@ table tr td:last-child {
   color: #00F5B8;
   font-size: 2em;
 }
+.endgamemulti {
+	border: 2px solid #364544;
+	display: none;
+	width: 200px;
+	top: 120px;
+	background-color: #364544 ;
+	position: absolute;
+	left: 50%;
+	margin-left: -100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	border-radius: 5px;
+	color: #00F5B8;
+	font-size: 2em;
+  }
 
 button.selected{
 	background-color: #00F5B8;
