@@ -3,7 +3,7 @@ body{
 	text-align: center;
 	font-family:  "Comic Sans MS", cursive, sans-serif;
 	padding-bottom: 0px;
-	padding-top: 10px;
+	padding-top: 0px;
 }
 
 
@@ -186,16 +186,6 @@ button.selected{
 	color: #364544;
   }
 
-
-
-  .container {
-	position: absolute;
-	top: 178px;
-    left: 50%;
-	margin-left: -64.5px;
-	margin-top: -85.5px;
-  }
-  
   .ghost {
 	animation: float 3s ease-out infinite;
   }
@@ -207,7 +197,7 @@ button.selected{
   }
   .shadowFrame {
 	width: 130px;
-	margin-top: 15px;
+	margin-top: 10px;
   }
   .shadow {
 	animation: shrink 3s ease-out infinite;
@@ -229,4 +219,53 @@ button.selected{
 	  margin: 0 5%;
 	}
   }
+  
+ 
 
+  /* // Extra small devices (portrait phones, less than 576px)
+  // No media query since this is the default in Bootstrap
+   */
+  /* // Small devices (landscape phones, 576px and up) */
+  @media screen and (min-width: 576px) { 
+	  .container{
+		position: absolute;
+		top: 155px;
+		left: 50%;
+		margin-left: -64.5px;
+		margin-top: -85.5px;
+	  }
+   }
+    
+
+  /* // Medium devices (tablets, 768px and up) */
+  @media screen and (min-width: 768px) { 
+	.container{
+		position: absolute;
+		top: 160px;
+		left: 50%;
+		margin-left: -64.5px;
+		margin-top: -85.5px;
+	  }
+  }
+  
+  /* // Large devices (desktops, 992px and up) */
+  @media screen and (min-width: 992px) {
+	.container{
+		position: absolute;
+		top: 162px;
+		left: 50%;
+		margin-left: -64.5px;
+		margin-top: -85.5px;
+	  }
+  }
+  
+  /* // Extra large devices (large desktops, 1200px and up) */
+  @media screen and  (min-width: 1200px) {
+	  	  .container{
+		position: absolute;
+		top: 168px;
+		left: 50%;
+		margin-left: -64.5px;
+		margin-top: -85.5px;
+	  }
+  }
