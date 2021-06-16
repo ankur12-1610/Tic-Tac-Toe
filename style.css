@@ -149,7 +149,7 @@ table tr td:last-child {
 }
 
 .endgame {
-  border: 2px solid #364544;
+  border: 2px solid #00F5B8;
   display: none;
   width: 200px;
   top: 120px;
@@ -165,7 +165,7 @@ table tr td:last-child {
   font-size: 2em;
 }
 .endgamemulti {
-	border: 2px solid #364544;
+	border: 2px solid #00F5B8;
 	display: none;
 	width: 200px;
 	top: 120px;

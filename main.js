@@ -1,7 +1,7 @@
 //singlpayer
 var tictacboard;
-let huPlayer ;
-let aiPlayer ;
+let human ;
+let bot ;
 
 const winCombos = [
 	[0, 1, 2],
@@ -25,16 +25,16 @@ function scrollingup(){
 		 }
 
 function selectO(){
-	huPlayer = "O";
-	aiPlayer = "X";
+	human = "O";
+	bot = "X";
 	scrolling();
 	singleStart();
 	alert("U can start playing the game as O");
 }
 
 function selectX(){
-	huPlayer = "X";
-	aiPlayer = "O";
+	human = "X";
+	bot = "O";
 	scrolling();
 	singleStart();
 	alert("U can start playing the game as X");
@@ -64,8 +64,8 @@ function startSingle() {
 
 function turnClick(square) {
 	if (typeof tictacboard[square.target.id] == 'number') {
-		turn(square.target.id, huPlayer)
-		if (!checkTie()) turn(bestSpot(), aiPlayer);
+		turn(square.target.id, human)
+		if (!checkTie()) turn(bestSpot(), bot);
 	}
 }
 
@@ -92,12 +92,12 @@ function checkWin(board, player) {
 function gameOver(gameWon) {
 	for (let index of winCombos[gameWon.index]) {
 		document.getElementById(index).style.backgroundColor =
-			gameWon.player == huPlayer ? "#00F5B8" : "#00F5B8";
+			gameWon.player == human ? "#00F5B8" : "#00F5B8";
 	}
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].removeEventListener('click', turnClick, false);
 	}
-	declareWinner(gameWon.player == huPlayer ? "You win :)" : "You lose :(");
+	declareWinner(gameWon.player == human ? "You win :)" : "You lose :(");
 	statusDisplay.innerHTML = drawMessage();
 }
 
@@ -111,7 +111,7 @@ function emptySquares() {
 }
 
 function bestSpot() {
-	return minimax(tictacboard, aiPlayer).index;
+	return minimax(tictacboard, bot).index;
 }
 
 function checkTie() {
@@ -129,10 +129,10 @@ function checkTie() {
 function minimax(newBoard, player) {
 	var availSpots = emptySquares();
 
-	if(checkWin(newBoard, huPlayer)){
+	if(checkWin(newBoard, human)){
 		return { score: -10};
 	}
-	else if (checkWin(newBoard, aiPlayer)){
+	else if (checkWin(newBoard, bot)){
 	    return{score: 10};
 	}
 	else if (availSpots.length === 0){
@@ -144,12 +144,12 @@ function minimax(newBoard, player) {
 		move.index = newBoard[availSpots[i]];
 		newBoard[availSpots[i]] = player;
 
-		if (player == aiPlayer) {
-			var result = minimax(newBoard, huPlayer);
+		if (player == bot) {
+			var result = minimax(newBoard, human);
 			move.score = result.score;
 		}
 		else {
-			var result = minimax(newBoard, aiPlayer);
+			var result = minimax(newBoard, bot);
 			move.score = result.score;
 		}
 
@@ -160,7 +160,7 @@ function minimax(newBoard, player) {
 	}
 
 	var bestMove;
-	if(player === aiPlayer) {
+	if(player === bot) {
 		var bestScore = -10000;
 		for(var i=0; i<moves.length; i++){
 			if (moves[i].score > bestScore) {
