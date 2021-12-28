@@ -8,6 +8,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: 🔃 Install
+        run: |
+          yarn
+      - name: 🧱 Build
+        run: |
+          yarn build
       - uses: ankur12-1610/pull-request-action@V1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
